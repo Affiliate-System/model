@@ -21,6 +21,8 @@ class Product:
             '5': 0}
         self.product_id_ext = ''
         self.shop_id_ext = ''
+        self.keyword = ''
+        self.hashtag = ''
 
     def set_title(self, val):
         if type(val) is type(self.title):
@@ -83,4 +85,22 @@ class Product:
         e = Exception('product_model.set_price_discount.unsupported_datatype')
         ErrorLogger.error(
             f'product_model.set_price_discount.unsupported_datatype. Details: {str({"price_discount_type": type(self.price_discount), "value_type": type(val)})}')
+        return e
+
+    def set_keyword(self, val):
+        if type(val) is type(self.keyword):
+            self.keyword = val
+            return None
+
+        e = Exception('product_model.set_keyword.unsupported_datatype')
+        ErrorLogger.error(f'product_model.set_keyword.unsupported_datatype. Details: {str({"keyword_type": type(self.keyword), "value_type": type(val)})}')
+        return e
+
+    def set_hashtag(self, val):
+        if type(val) is type(self.hashtag):
+            self.hashtag = val
+            return None
+
+        e = Exception('product_model.set_hashtag.unsupported_datatype')
+        ErrorLogger.error(f'product_model.set_hashtag.unsupported_datatype. Details: {str({"hashtag_type": type(self.hashtag), "value_type": type(val)})}')
         return e
